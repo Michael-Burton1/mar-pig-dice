@@ -22,9 +22,9 @@ Game.prototype.pass = function (player) {
     if (p.name === player.name) {
       this.players[i] = player;
       if (i < this.players.length - 1) {
-        game.currentPlayer = this.players[i + 1]
+        this.currentPlayer = this.players[i + 1]
       } else {
-        game.currentPlayer = this.players[0]
+        this.currentPlayer = this.players[0]
       }
     }
   }
@@ -67,7 +67,7 @@ $(document).ready(function () {
   });
 
   function showScoreboard() {
-    $(".players").append("<li><strong>Player's name:</strong>" + game.players[game.players.length - 1].name + "<br> <strong>Player's current score: </strong>" + game.players[game.players.length - 1].turnScore+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
+    $(".players").append("<li><strong>Player's name:</strong>" + game.players[game.players.length - 1].name + "<br> <strong>Player's turn score: </strong>" + game.players[game.players.length - 1].turnScore+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
   }
 
   $("#go").click(function () {
@@ -83,6 +83,10 @@ $(document).ready(function () {
     $("#rollValue").text(rollValue);
     player.addRollValue(rollValue);
     console.log(player.turnScore);
+    $(".players li").remove();
+    $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
     
   });
 });
+
+

@@ -10,11 +10,13 @@ Code: player.addRoll(5)
 Expected Output: 5
 
 
-Describe rollDice()
+Describe roll()
 
 Test: "It should return a number a number between 1 and 6"
 Code: roll()
 Expected Output: 1,2,3,4,5,6
+
+Test: "
 
 ## Game Tests
 Describe: addPlayer()
@@ -31,4 +33,4 @@ let sammai = new Player("Sammai")
       game.addPlayer(nick);
       game.addPlayer(sammai);
       game.pass(nick);
-Expected Output: Player { name: "Sammai", currentRoll: 0, score: 0 }
+Expected Output: Player { name: "Sammai", currentRoll: 0, score: 0 }g
