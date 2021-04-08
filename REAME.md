@@ -16,7 +16,12 @@ Test: "It should return a number a number between 1 and 6"
 Code: roll()
 Expected Output: 1,2,3,4,5,6
 
-Test: "
+Describe: addRollValue()
+Test: "The turnScore should zero out if the rollValue is one, othewise the roll values will continue to add."
+Code: 
+rollValue = 1 
+addRollValue(rollValue)
+Expected Output: turnScore = 0
 
 ## Game Tests
 Describe: addPlayer()

@@ -43,7 +43,13 @@ Player.prototype.addScore = function () {
 }
 
 Player.prototype.addRollValue = function (rollValue) {
+  if(rollValue === 1){
+  this.turnScore = 0
+  console.log(this.turnScore)
+  }else{
   this.turnScore += rollValue;
+  console.log(this.turnScore)
+  }
 }
 
 
