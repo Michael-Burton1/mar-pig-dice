@@ -47,7 +47,6 @@ Player.prototype.addRollValue = function (rollValue) {
 }
 
 
-
 //let player = new Player("Nick", 0, 0);
 
 // Ui logic
@@ -75,4 +74,10 @@ $(document).ready(function () {
     game.currentPlayer = game.players[0];
     console.log(game.currentPlayer)
   })
+  //it should display the current roll value
+  $("#roll").click(function (){
+    
+    $("#rollValue").text(roll());
+    
+  });
 });
