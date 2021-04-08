@@ -10,7 +10,6 @@ function Game() {
   this.currentPlayer = undefined;
 }
 
-
 Game.prototype.addPlayer = function (player) {
   this.players.push(player);
 }
@@ -18,7 +17,6 @@ Game.prototype.addPlayer = function (player) {
 Game.prototype.pass = function (player) {
   for (let i = 0; i < this.players.length; i++) {
     const p = this.players[i];
-    //console.log(p.name);
     if (p.name === player.name) {
       this.players[i] = player;
       if (i < this.players.length - 1) {
@@ -47,15 +45,11 @@ Player.prototype.addRollValue = function (rollValue) {
   console.log(this.turnScore)
 }
 
-
-//let player = new Player("Nick", 0, 0);
-
 // UI logic
 $(document).ready(function () {
   let game = new Game();
   $(".playerForm").submit(function (event) {
     event.preventDefault();
-
     let name1 = $("input#name1").val();
     if (name1 != "") {
       let player = new Player(name1)
@@ -76,7 +70,6 @@ $(document).ready(function () {
     $(".playerForm").hide();
     $("#go").hide();
     game.currentPlayer = game.players[0];
-    // console.log(game.currentPlayer)
   })
   $("#Pass").click(function(){
     let player = game.currentPlayer;
@@ -98,7 +91,6 @@ $(document).ready(function () {
   $("#roll").click(function (){
     let rollValue = roll();
     let player = game.currentPlayer;
-    // let turnScore = player.turnScore;
     $("#rollValue").text(rollValue);
     if(rollValue === 1){
       player.turnScore = 0
@@ -106,11 +98,10 @@ $(document).ready(function () {
     }else{
       player.addRollValue(rollValue)
     }
-    // console.log(player.turnScore);
     $(".players li").remove();
     $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
-    
   });
 });
+
 
 
