@@ -80,12 +80,16 @@ $(document).ready(function () {
     let player = game.currentPlayer;
     player.addScore();
     $(".players li").remove();
-    $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
-    game.pass(player);
-    player = game.currentPlayer;
-    $(".players li").remove();
-    $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
-    console.log(player);
+    $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore + "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
+    if(player.score >= 100){
+      //Congrats!
+    }else{
+      game.pass(player);
+      player = game.currentPlayer;
+      $(".players li").remove();
+      $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
+      console.log(player);
+    }
     $("#roll").show();
   })
   //it should display the current roll value
@@ -102,7 +106,7 @@ $(document).ready(function () {
     }
     // console.log(player.turnScore);
     $(".players li").remove();
-    $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
+    $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
     
   });
 });
