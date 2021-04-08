@@ -43,19 +43,14 @@ Player.prototype.addScore = function () {
 }
 
 Player.prototype.addRollValue = function (rollValue) {
-  if(rollValue === 1){
-  this.turnScore = 0
-  console.log(this.turnScore)
-  }else{
   this.turnScore += rollValue;
   console.log(this.turnScore)
-  }
 }
 
 
 //let player = new Player("Nick", 0, 0);
 
-// Ui logic
+// UI logic
 $(document).ready(function () {
   let game = new Game();
   $(".playerForm").submit(function (event) {
@@ -88,6 +83,12 @@ $(document).ready(function () {
     // let turnScore = player.turnScore;
     $("#rollValue").text(rollValue);
     player.addRollValue(rollValue);
+    if(rollValue === 1){
+      player.turnScore = 0
+      $("#roll").hide()
+    }else{
+      player.addRollValue(rollValue)
+    }
     console.log(player.turnScore);
     $(".players li").remove();
     $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
