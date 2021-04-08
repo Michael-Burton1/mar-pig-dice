@@ -67,7 +67,7 @@ $(document).ready(function () {
   });
 
   function showScoreboard() {
-    $(".players").append("<li>" + game.players[game.players.length - 1].name + game.players[game.players.length - 1].currentRoll + game.players[game.players.length - 1].score + "</li>");
+    $(".players").append("<li><strong>Player's name:</strong>" + game.players[game.players.length - 1].name + "<br> <strong>Player's current score: </strong>" + game.players[game.players.length - 1].currentRoll+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
   }
 
   $("#go").click(function () {
