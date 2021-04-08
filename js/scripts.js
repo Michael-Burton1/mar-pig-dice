@@ -33,17 +33,17 @@ Game.prototype.pass = function (player) {
 // Player logic
 function Player(name) {
   this.name = name
-  this.currentRoll = 0
+  this.turnScore = 0
   this.score = 0
 }
 
 Player.prototype.addScore = function () {
-  this.score += this.currentRoll;
-  this.currentRoll = 0;
+  this.score += this.turnScore;
+  this.turnScore = 0;
 }
 
 Player.prototype.addRollValue = function (rollValue) {
-  this.currentRoll += rollValue;
+  this.turnScore += rollValue;
 }
 
 
@@ -54,19 +54,20 @@ $(document).ready(function () {
   let game = new Game();
   $(".playerForm").submit(function (event) {
     event.preventDefault();
+
     let name1 = $("input#name1").val();
     if (name1 != "") {
       let player = new Player(name1)
       game.addPlayer(player);
       $("input#name1").val("");
     } else {
-      alert("plz enter a name")
+      alert("please enter a name")
     }
     showScoreboard();
   });
 
   function showScoreboard() {
-    $(".players").append("<li><strong>Player's name:</strong>" + game.players[game.players.length - 1].name + "<br> <strong>Player's current score: </strong>" + game.players[game.players.length - 1].currentRoll+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
+    $(".players").append("<li><strong>Player's name:</strong>" + game.players[game.players.length - 1].name + "<br> <strong>Player's current score: </strong>" + game.players[game.players.length - 1].turnScore+ "<br> <Strong> Player's total score: </strong> " + game.players[game.players.length - 1].score + "</li>");
   }
 
   $("#go").click(function () {
@@ -76,8 +77,12 @@ $(document).ready(function () {
   })
   //it should display the current roll value
   $("#roll").click(function (){
-    
-    $("#rollValue").text(roll());
+    let rollValue = roll();
+    let player = game.currentPlayer;
+    // let turnScore = player.turnScore;
+    $("#rollValue").text(rollValue);
+    player.addRollValue(rollValue);
+    console.log(player.turnScore);
     
   });
 });
