@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(96, 7, 51);
+  color:rgb(31, 227, 227);
+
+}
+
+.congrats{
+  display: none;
+}
+.turn{
+  text-align: center;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#add{
+  margin-top: 30px;
+}

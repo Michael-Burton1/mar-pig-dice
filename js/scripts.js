@@ -72,7 +72,9 @@ $(document).ready(function () {
   }
 
   $("#go").click(function () {
+    $(".welcome").hide();
     $(".playerForm").hide();
+    $("#go").hide();
     game.currentPlayer = game.players[0];
     // console.log(game.currentPlayer)
   })
@@ -81,8 +83,8 @@ $(document).ready(function () {
     player.addScore();
     $(".players li").remove();
     $(".players").append("<li><strong>Player's name:</strong>" + player.name + "<br> <strong>Player's turn score: </strong>" + player.turnScore + "<br> <Strong> Player's total score: </strong> " + player.score + "</li>");
-    if(player.score >= 100){
-      //Congrats!
+    if(player.score >= 20){
+      $(".congrats").show()
     }else{
       game.pass(player);
       player = game.currentPlayer;
